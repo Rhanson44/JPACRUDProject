@@ -24,8 +24,7 @@ public class AlbumDAOImpl implements AlbumDAO {
 
 	@Override
 	public List<Album> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT a FROM Album a", Album.class).getResultList();
 	}
 
 	@Override
