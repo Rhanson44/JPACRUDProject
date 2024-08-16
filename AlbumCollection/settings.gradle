@@ -1,0 +1,2 @@
+rootProject.name = 'AlbumCollection'
+includeFlat 'JPAAlbum'
