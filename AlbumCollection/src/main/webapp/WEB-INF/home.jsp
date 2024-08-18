@@ -9,10 +9,10 @@
 </head>
 <body>
 <h1>Album Collection</h1>
-<a href="addAlbumForm.do">Add an Album</a>
+<h2><a href="addAlbumForm.do">Add an Album</a></h2>
 <br>
 <c:forEach items="${albums}" var="album">
-		<img src="${album.imageUrl}" alt="${album.name}">
+		<img src="${album.imageUrl}" alt="${album.name}" width=375px height=300px>
 		<h2>${album.name} - ${album.artist}</h2>
 		<h5>${album.releaseYear}</h2>
 		<h5>${album.genre}</h2>
