@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="addAlbum.do" name="addAlbum" method="POST">
-    Title<input type="text" name="title">
+    Title<input type="text" name="name">
     Artist<input type="text" name="artist">
     Release Year<input type="text" name="releaseYear">
     Genre<input type="text" name="genre">

@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.album.data.AlbumDAO;
 import com.skilldistillery.album.entities.Album;
+
 
 @Controller
 public class AlbumController {
@@ -36,7 +38,23 @@ public class AlbumController {
 	public ModelAndView addAlbum(Album album) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("album", albumDAO.create(album));
+		mv.setViewName("nav");
+		return mv;
+	}
+	
+	@RequestMapping("goHome.do")
+	public ModelAndView goHome() {
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("home");
 		return mv;
 	}
+	
+	@RequestMapping(path="deleteAlbum.do", method=RequestMethod.POST)
+	public ModelAndView deleteAlbum(@RequestParam("albumId") int albumId) {
+		ModelAndView mv = new ModelAndView();
+		albumDAO.deleteById(albumId);
+		mv.setViewName("nav");
+		return mv;
+	}
+	
 }

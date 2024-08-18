@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.album.entities.Album;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
@@ -41,8 +42,14 @@ public class AlbumDAOImpl implements AlbumDAO {
 
 	@Override
 	public boolean deleteById(int albumId) {
-		// TODO Auto-generated method stub
-		return false;
+	    Album album = em.find(Album.class, albumId);
+	    if (album != null) {
+	        em.remove(album);
+	        return true;
+	    } else {
+	        System.out.println("No entity found with ID: " + albumId);
+	        return false;
+	    }
 	}
 
 }
