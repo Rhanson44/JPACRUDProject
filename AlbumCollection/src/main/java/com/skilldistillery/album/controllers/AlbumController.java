@@ -14,6 +14,7 @@ import com.skilldistillery.album.data.AlbumDAO;
 import com.skilldistillery.album.entities.Album;
 
 
+
 @Controller
 public class AlbumController {
 
@@ -38,14 +39,14 @@ public class AlbumController {
 	public ModelAndView addAlbum(Album album) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("album", albumDAO.create(album));
-		mv.setViewName("nav");
+		mv.setViewName("redirect:/");
 		return mv;
 	}
 	
 	@RequestMapping("goHome.do")
 	public ModelAndView goHome() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home");
+		mv.setViewName("redirect:/");
 		return mv;
 	}
 	
@@ -53,8 +54,28 @@ public class AlbumController {
 	public ModelAndView deleteAlbum(@RequestParam("albumId") int albumId) {
 		ModelAndView mv = new ModelAndView();
 		albumDAO.deleteById(albumId);
-		mv.setViewName("nav");
+		mv.setViewName("redirect:/");
 		return mv;
 	}
+	
+	@RequestMapping("updateAlbumForm.do")
+	public ModelAndView showUpdateAlbumForm(@RequestParam("albumId2") int albumId) {
+	    ModelAndView mv = new ModelAndView();
+	    Album album = albumDAO.findById(albumId);
+	    mv.addObject("album", album);
+	    mv.setViewName("updateAlbum");
+	    return mv;
+	}
+
+	
+	@RequestMapping(path="updateAlbum.do", method=RequestMethod.POST)
+	public ModelAndView updateAlbum(Album album, @RequestParam("albumId2") int albumId) {
+	    ModelAndView mv = new ModelAndView();
+	    album.setId(albumId);
+	    albumDAO.update(album);
+	    mv.setViewName("redirect:/");
+	    return mv;
+	}
+
 	
 }

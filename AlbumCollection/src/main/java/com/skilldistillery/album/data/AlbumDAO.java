@@ -9,6 +9,6 @@ public interface AlbumDAO {
 	Album findById(int albumId);
 	List<Album> findAll();
 	Album create(Album newAlbum);
-	Album update(int albumId, Album album);
+	Album update(Album album);
 	boolean deleteById(int albumId);
 }
