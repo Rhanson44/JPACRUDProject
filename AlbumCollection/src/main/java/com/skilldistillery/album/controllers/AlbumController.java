@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.album.data.AlbumDAO;
@@ -24,12 +25,18 @@ public class AlbumController {
 		return "home";
 	}
 	
-	@RequestMapping("addAlbum.do")
+	@RequestMapping("addAlbumForm.do")
+	public ModelAndView showAddAlbumForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("addAlbum");
+		return mv;
+	}
+	
+	@RequestMapping(path="addAlbum.do", method=RequestMethod.POST)
 	public ModelAndView addAlbum(Album album) {
 		ModelAndView mv = new ModelAndView();
-		album = albumDAO.create(album);
-		mv.addObject("album", album);
-		mv.setViewName("addAlbum");
+		mv.addObject("album", albumDAO.create(album));
+		mv.setViewName("home");
 		return mv;
 	}
 }
