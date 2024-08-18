@@ -21,6 +21,8 @@ public class Album {
 	private String genre;
 	@Column(name="image_url")
 	private String imageUrl;
+	@Column(name="sale_price")
+	private Double salePrice;
 	
 
 	public int getId() {
@@ -60,6 +62,13 @@ public class Album {
 		this.imageUrl = imageUrl;
 	}
 
+	public Double getSalePrice() {
+		return salePrice;
+	}
+	public void setSalePrice(Double salePrice) {
+		this.salePrice = salePrice;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -75,7 +84,10 @@ public class Album {
 		builder.append(genre);
 		builder.append(", imageUrl=");
 		builder.append(imageUrl);
+		builder.append(", salePrice=");
+		builder.append(salePrice);
 		builder.append("]");
 		return builder.toString();
 	}
+	
 }

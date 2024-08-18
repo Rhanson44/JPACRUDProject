@@ -10,5 +10,6 @@
 <body>
 <h1>Album Collection</h1>
 ${albums}
+<a href="addAlbum.do">Add an Album</a>
 </body>
 </html>
