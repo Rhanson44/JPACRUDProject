@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
+
 .album-container {
 	display: flex;
 	align-items: center;
 	margin-bottom: 20px;
+	background-color: silver;
 }
 
 .album-image {

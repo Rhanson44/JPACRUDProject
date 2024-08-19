@@ -39,14 +39,14 @@ public class AlbumController {
 	public ModelAndView addAlbum(Album album) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("album", albumDAO.create(album));
-		mv.setViewName("redirect:/");
+		mv.setViewName("redirect:home.do");
 		return mv;
 	}
 	
 	@RequestMapping("goHome.do")
 	public ModelAndView goHome() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/");
+		mv.setViewName("redirect:home.do");
 		return mv;
 	}
 	
@@ -54,7 +54,7 @@ public class AlbumController {
 	public ModelAndView deleteAlbum(@RequestParam("albumId") int albumId) {
 		ModelAndView mv = new ModelAndView();
 		albumDAO.deleteById(albumId);
-		mv.setViewName("redirect:/");
+		mv.setViewName("redirect:home.do");
 		return mv;
 	}
 	
@@ -73,7 +73,7 @@ public class AlbumController {
 	    ModelAndView mv = new ModelAndView();
 	    album.setId(albumId);
 	    albumDAO.update(album);
-	    mv.setViewName("redirect:/");
+	    mv.setViewName("redirect:home.do");
 	    return mv;
 	}
 

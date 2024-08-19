@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
+<main id="main">
 <h1>Album Collection</h1>
 <h2><a href="addAlbumForm.do">Add an Album</a></h2>
 <br>
@@ -19,8 +20,8 @@
     </div>
     <div class="album-info">
       <h2>${album.name} - ${album.artist}</h2>
-      <h3>${album.releaseYear}</h3>
-      <h3>${album.genre}</h3>
+      <h3>Release Year: ${album.releaseYear}</h3>
+      <h3>Genre: ${album.genre}</h3>
       <div class="album-buttons">
         <form action="deleteAlbum.do" method="post">
           <input type="hidden" name="albumId" value="${album.id}">
@@ -33,7 +34,7 @@
       </div>
     </div>
   </div>
-  <hr>
 </c:forEach>
+</main>
 </body>
 </html>
